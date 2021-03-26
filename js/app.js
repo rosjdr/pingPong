@@ -1,5 +1,21 @@
-function game() {            
-    createBall(100, 100, 10);
+function game() {
+    createBall(x, y, r);
+    moveBall();
+}
+
+function moveBall(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  
+
+    let agora = new Date().getTime();
+    
+    let decorrido = agora - anterior;
+    
+    let velocidade = 20;
+    x += velocidade * decorrido / 1000;
+    createBall(x, y, r);
+
+    anterior = agora;
+    requestAnimationFrame(moveBall);
 }
 
 function createBall(x, y, r) {
@@ -14,7 +30,13 @@ function createBall(x, y, r) {
 
 //globals and configurations
 const ballColor = "#FFFFFF";
+let x = 100;
+let y = 100;
+let r = 10;
+
 const canvas = document.querySelector("#gameScreen");
 const ctx = canvas.getContext("2d");
+
+let anterior = new Date().getTime();
 
 game();
