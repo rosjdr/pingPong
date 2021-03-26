@@ -1,6 +1,6 @@
 class Hero {
 
-    constructor(context){
+    constructor(context, tecladoHandler) {
         this._x = 10;
         this._y = 5;
         this._width = 15;
@@ -9,10 +9,14 @@ class Hero {
         this._color = "#4ca2bf"
 
         this._ctx = context;
+        this._tecladoHandler = tecladoHandler;
     }
 
     refresh() {
-
+        if (this._tecladoHandler.pressionada(this._tecladoHandler._arrowDown) &&
+            this._y < (this._ctx.canvas.height - this._height)) this._y += 10;
+        else if (this._tecladoHandler.pressionada(this._tecladoHandler._arrowUp) &&
+            this._y > 0) this._y -= 10;
     }
 
     selfDraw() {

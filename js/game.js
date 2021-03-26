@@ -4,7 +4,7 @@ class Game {
         this._sprites = [];
         this._isRunning = false;
         this._ctx = context;
-        console.log(this._ctx);
+        this._tecladoHandler = new TecladoHandler(document);
 
         this.init();
     }
@@ -12,7 +12,7 @@ class Game {
     init() {
         const ballColor = "#FFFFFF";
         let bola = new Bola(this._ctx, 10, 10, 10, 5, 5, ballColor);
-        let hero = new Hero(this._ctx);
+        let hero = new Hero(this._ctx, this._tecladoHandler);
 
         this.addSprite(bola);
         this.addSprite(hero);
