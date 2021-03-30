@@ -9,11 +9,17 @@ class Game {
         this.colisionHandler = new ColisionHandler();
 
         this.init();
+
+        this._scoreboard = [0,0];
     }
 
     init() {
         const ballColor = "#42e71f";
-        let bola = new Bola(this._ctx, 100, 100, 10, 5, 5, ballColor);
+
+        const halfScreenHeight = this._ctx.canvas.height / 2;
+        const halfScreenWidth  = this._ctx.canvas.width / 2;
+
+        let bola = new Bola(this._ctx, halfScreenWidth, halfScreenHeight, 10, 5, 5, ballColor);
         let hero = new Hero(this._ctx, this._tecladoHandler);
         let enemy = new Enemy(this._ctx);
 
@@ -28,7 +34,6 @@ class Game {
 
     clearScreen() {
         this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
-
     }
 
     addSprite(sprite) {
