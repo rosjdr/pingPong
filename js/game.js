@@ -6,13 +6,18 @@ class Game {
         this._ctx = context;
         this._tecladoHandler = new TecladoHandler(document);
 
+        this.colisionHandler = new ColisionHandler();
+
         this.init();
     }
 
     init() {
         const ballColor = "#FFFFFF";
-        let bola = new Bola(this._ctx, 10, 10, 10, 5, 5, ballColor);
+        let bola = new Bola(this._ctx, 100, 100, 10, 5, 5, ballColor);
         let hero = new Hero(this._ctx, this._tecladoHandler);
+
+        this.colisionHandler.addSprite(bola);
+        this.colisionHandler.addSprite(hero);
 
         this.addSprite(bola);
         this.addSprite(hero);
@@ -48,6 +53,8 @@ class Game {
 
         //redraw all sprites on screen
         this._sprites.forEach(sprite => sprite.selfDraw());
+
+        this.colisionHandler.detect();
 
         requestAnimationFrame(() => this.nextFrame());
     }

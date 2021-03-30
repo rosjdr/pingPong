@@ -36,5 +36,20 @@ class Bola {
         this._ctx.restore();
     }
 
+    getSquaresToColision() {
+        return [{
+            x: this._x - this._raio, //x is the center of ball
+            y: this._y - this._raio, //idem
+            width: this._raio * 2,
+            height: this._raio * 2
+        }]
+
+    }
+
+    colisionWith(sprite){
+        this.speedX *= -1;
+        console.log('Colision detected between ball and sprite: ', sprite);
+    }
+
 
 }

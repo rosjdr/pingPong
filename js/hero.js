@@ -27,4 +27,16 @@ class Hero {
 
         this._ctx.restore();
     }
+
+    getSquaresToColision() {
+        return [{
+            x: this._x, //x is the center of ball
+            y: this._y, //idem
+            width: this._width,
+            height: this._height
+        }]
+
+    }
+
+    colisionWith(sprite){}
 }
