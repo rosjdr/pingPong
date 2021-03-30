@@ -12,15 +12,18 @@ class Game {
     }
 
     init() {
-        const ballColor = "#FFFFFF";
+        const ballColor = "#42e71f";
         let bola = new Bola(this._ctx, 100, 100, 10, 5, 5, ballColor);
         let hero = new Hero(this._ctx, this._tecladoHandler);
+        let enemy = new Enemy(this._ctx);
 
         this.colisionHandler.addSprite(bola);
         this.colisionHandler.addSprite(hero);
+        this.colisionHandler.addSprite(enemy);
 
         this.addSprite(bola);
         this.addSprite(hero);
+        this.addSprite(enemy);
     }
 
     clearScreen() {
