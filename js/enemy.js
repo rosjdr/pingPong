@@ -1,6 +1,6 @@
 class Enemy {
 
-    constructor(context) {
+    constructor(context, game) {
         this._ctx = context;
 
         this._x = this._ctx.canvas.width - 25;
@@ -8,11 +8,28 @@ class Enemy {
         this._width = 15;
         this._height = 80;
 
-        this._color = "#e00b0b"        
+        this._color = "#e00b0b";
+        
+        this._game = game;
     }
 
-    refresh() {
-        
+    whereIsTheBall(){
+        return this._game.getBall();
+    }
+
+    verticalCenter(){
+        return this._y + (this._height / 2);
+    }
+
+    refresh() {        
+        const ball = this.whereIsTheBall();
+        if ((this.verticalCenter() > ball.y) &&
+          (this._y > 0)) {
+            this._y -= 4;
+        } else if ((this.verticalCenter() < ball.y) &&
+          this._y < (this._ctx.canvas.height - this._height)) {
+            this._y += 4;
+        }
     }
 
     selfDraw() {

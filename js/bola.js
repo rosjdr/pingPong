@@ -48,7 +48,6 @@ class Bola {
 
     colisionWith(sprite){
         this.speedX *= -1;
-        console.log('Colision detected between ball and sprite: ', sprite);
     }
 
 

@@ -21,7 +21,7 @@ class Game {
 
         let bola = new Bola(this._ctx, halfScreenWidth, halfScreenHeight, 10, 5, 5, ballColor);
         let hero = new Hero(this._ctx, this._tecladoHandler);
-        let enemy = new Enemy(this._ctx);
+        let enemy = new Enemy(this._ctx, this);
 
         this.colisionHandler.addSprite(bola);
         this.colisionHandler.addSprite(hero);
@@ -30,6 +30,13 @@ class Game {
         this.addSprite(bola);
         this.addSprite(hero);
         this.addSprite(enemy);
+    }
+
+    getBall(){
+        return {
+            x: this._sprites[0]._x,
+            y: this._sprites[0]._y,
+        }
     }
 
     clearScreen() {
